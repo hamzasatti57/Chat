@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+
+    <% if !current_user %> 
+       <%= link_to "Sign Up", new_user_registration_path %>
+       <%= link_to "Sign IN",new_user_session_path %>
+       <% else %>
+       <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+       <% end %>
+    <div class="container">
+
+<p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+  </body>
+</html>
